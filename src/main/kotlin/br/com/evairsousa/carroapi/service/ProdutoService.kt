@@ -24,11 +24,37 @@ class ProdutoService {
     }
 
     fun salvar(produto: Produto) {
-        this.produtoRepository.save(produto);
+
+        if(produto.nome.isNullOrBlank()){
+            throw Exception("Nome do produto deve ser preenchido")
+        }
+
+        if(produto.categoria.isNullOrBlank()){
+            throw Exception("Categoria do produto deve ser preenchido")
+        }
+
+        if(produto.preco < 0){
+            throw Exception("Preço do produto deve ser maior que 0")
+        }
+
+        this.produtoRepository.save(produto)
     }
 
     fun buscarTodosProdutos(): List<Produto>{
         return this.produtoRepository.findAll()
+    }
+
+    fun deletar(produto:Produto){
+        this.produtoRepository.delete(produto)
+    }
+
+    fun alterar(produto:Produto){
+
+        if(produto.id.isNullOrBlank()){
+            throw Exception("Id deve ser preenchido")
+        }
+
+        this.produtoRepository.save(produto)
     }
 
 }

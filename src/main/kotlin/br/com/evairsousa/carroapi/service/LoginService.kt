@@ -14,7 +14,24 @@ class LoginService {
     lateinit var loginRepository: LoginRepository
 
     fun salvar(login: Login) {
-        this.loginRepository.save(login);
+
+        if(login.email.isNullOrBlank()){
+            throw Exception("Email deve ser preenchido")
+        }
+
+        if(login.nome.isNullOrBlank()){
+            throw Exception("Nome deve ser preenchido")
+        }
+
+        if(login.senha.isNullOrBlank()){
+            throw Exception("Senha deve ser preenchido")
+        }
+
+        if(loginRepository.findByEmail(login.email).isNotEmpty()){
+            throw Exception("Email já cadastrado.")
+        }
+
+        this.loginRepository.save(login)
     }
 
     fun login(login: Login): Login{
