@@ -40,8 +40,9 @@ class ProdutoController {
     }
 
     @DeleteMapping
-    fun deletar(@RequestBody produto: Produto) {
-        produtoService.deletar(produto);
+    @RequestMapping("/{id}/deletar")
+    fun deletar(@PathVariable("id") id:String) {
+        produtoService.deletar(id);
     }
 
 }

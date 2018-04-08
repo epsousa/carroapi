@@ -44,8 +44,9 @@ class ProdutoService {
         return this.produtoRepository.findAll()
     }
 
-    fun deletar(produto:Produto){
-        this.produtoRepository.delete(produto)
+    fun deletar(id: String){
+        var prod = Produto(id,"","",0,"")
+        this.produtoRepository.delete(prod)
     }
 
     fun alterar(produto:Produto){
