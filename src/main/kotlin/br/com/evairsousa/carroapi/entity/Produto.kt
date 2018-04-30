@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class Produto(@Id var id: String?,
                  var nome: String,
                  var categoria: String,
-                 var preco: Int,
+                 var preco: Double,
                  var urlImagem: String?) {
 
 //    constructor():this("","", "", 0, "")
