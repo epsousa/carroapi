@@ -45,7 +45,7 @@ class ProdutoService {
     }
 
     fun deletar(id: String){
-        var prod = Produto(id,"","",0,"")
+        var prod = Produto(id,"","",0.00,"")
         this.produtoRepository.delete(prod)
     }
 
