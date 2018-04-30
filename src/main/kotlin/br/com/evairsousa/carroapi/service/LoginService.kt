@@ -17,6 +17,8 @@ class LoginService {
 
         if(login.email.isNullOrBlank()){
             throw Exception("Email deve ser preenchido")
+        } else if(!login.email.contains(Regex("(\\w+@\\w+\\.\\w+)(\\.\\w+)?"))){
+            throw Exception("Email deve ser preenchido de acordo com exemplo: exemplo@exemplo.com")
         }
 
         if(login.nome.isNullOrBlank()){
